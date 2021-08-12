@@ -56,6 +56,10 @@ function convertMonthsToYears(months) {
   )} and ${remainingMonths} ${calculateAgeLabel(remainingMonths, "month")}`;
 }
 
+function calculateAge(age) {
+  return convertMonthsToYears(getHumanAge(age));
+}
+
 module.exports = {
   data,
   getIndexOfCatValue,
@@ -63,6 +67,7 @@ module.exports = {
   getHumanAge,
   calculateAgeLabel,
   convertMonthsToYears,
+  calculateAge
 };
 
 // Logic notes
