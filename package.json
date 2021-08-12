@@ -1,0 +1,18 @@
+{
+  "name": "cat-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cat-calculator.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Emma Karayiannis",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.0.3"
+  }
+}
