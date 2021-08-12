@@ -1,47 +1,49 @@
 const { strictEqual: eq } = require("assert");
 const {
-  getIndexOfCatValue,
+  getIndexOfHumanValue,
   checkValidDataIndex,
-  getHumanAge,
+  getCatAge,
   convertMonthsToYears,
   calculateAgeLabel,
   calculateAge,
 } = require("../cat-calculator");
 
 describe("Cat calculator", function () {
-  describe("getIndexOfCatValue", function () {
+  describe("getIndexOfHumanValue", function () {
     it("should return the index of 3 if passed in 15", () => {
-      const valueExists = getIndexOfCatValue(15);
+      const valueExists = getIndexOfHumanValue(15);
       eq(valueExists, 3);
     });
 
     it("should return -1 if passed in 6", () => {
-      const valueExists = getIndexOfCatValue(6);
+      const valueExists = getIndexOfHumanValue(6);
       eq(valueExists, -1);
     });
-  }),
-    describe("checkValidDataIndex", function () {
-      it("should return 2 when passed in 10", () => {
-        const humanValue = checkValidDataIndex(10);
-        eq(humanValue, 2);
-      });
+  });
 
-      it("should return false if passed in 6", () => {
-        const humanValue = checkValidDataIndex(7);
-        eq(humanValue, false);
-      });
-    }),
-    describe("getHumanAge", function () {
-      it("should return 6 when passed in 10", () => {
-        const humanAge = getHumanAge(10);
-        eq(humanAge, 6);
-      });
-
-      it("should return 'this age does not exist in the data' when passed in 7", () => {
-        const humanAge = getHumanAge(7);
-        eq(humanAge, undefined);
-      });
+  describe("checkValidDataIndex", function () {
+    it("should return 2 when passed in 10", () => {
+      const catValue = checkValidDataIndex(10);
+      eq(catValue, 2);
     });
+
+    it("should return false if passed in 6", () => {
+      const catValue = checkValidDataIndex(7);
+      eq(catValue, false);
+    });
+  });
+
+  describe("getCatAge", function () {
+    it("should return 6 when passed in 10", () => {
+      const catAge = getCatAge(10);
+      eq(catAge, 6);
+    });
+
+    it("should return 'undefined' when passed in 7", () => {
+      const catAge = getCatAge(7);
+      eq(catAge, undefined);
+    });
+  });
 
   describe("calculateAgeLabels", function () {
     it("should return 'months' when passed in 4 and month", () => {
@@ -105,6 +107,13 @@ describe("Cat calculator", function () {
     it("should return 'this age does not exist in the data' when passed in 7", () => {
       const age = calculateAge(7);
       eq(age, "this age does not exist in the data");
+    });
+  });
+
+  describe.skip("findIndexesBeforeAndAfter", function () {
+    it("should return an array of '1, 2' if passed in 7", () => {
+      const indexes = calculateAge(21);
+      eq(indexes, [1, 2]);
     });
   });
 });

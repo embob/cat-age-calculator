@@ -15,29 +15,29 @@
 // 15 years  super senior cat
 
 const data = [
-  { human: 1, cat: 1 },
-  { human: 3, cat: 4 },
-  { human: 6, cat: 10 },
-  { human: 12, cat: 15 },
-  { human: 18, cat: 21 },
-  { human: 24, cat: 24 },
-  { human: 36, cat: 28 },
+  { cat: 1, human: 1 },
+  { cat: 3, human: 4 },
+  { cat: 6, human: 10 },
+  { cat: 12, human: 15 },
+  { cat: 18, human: 21 },
+  { cat: 24, human: 24 },
+  { cat: 36, human: 28 },
 ];
 
-function getIndexOfCatValue(age) {
-  return data.findIndex((object) => object.cat === age);
+function getIndexOfHumanValue(age) {
+  return data.findIndex((object) => object.human === age);
 }
 
 function checkValidDataIndex(age) {
-  const index = getIndexOfCatValue(age);
+  const index = getIndexOfHumanValue(age);
   if (index > data.length - 1 || index < 0) return false;
   return index;
 }
 
-function getHumanAge(catAge) {
-  const validIndex = checkValidDataIndex(catAge);
+function getCatAge(humanAge) {
+  const validIndex = checkValidDataIndex(humanAge);
   if (!validIndex) return;
-  return data[validIndex].human;
+  return data[validIndex].cat;
 }
 
 function calculateAgeLabel(value, type) {
@@ -60,14 +60,14 @@ function convertMonthsToYears(months) {
 }
 
 function calculateAge(age) {
-  return convertMonthsToYears(getHumanAge(age));
+  return convertMonthsToYears(getCatAge(age));
 }
 
 module.exports = {
   data,
-  getIndexOfCatValue,
+  getIndexOfHumanValue,
   checkValidDataIndex,
-  getHumanAge,
+  getCatAge,
   calculateAgeLabel,
   convertMonthsToYears,
   calculateAge
