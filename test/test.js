@@ -1,4 +1,4 @@
-const { strictEqual: eq } = require("assert");
+const { strictEqual: eq, deepStrictEqual } = require("assert");
 const {
   getIndexOfHumanValue,
   checkValidDataIndex,
@@ -6,6 +6,7 @@ const {
   convertMonthsToYears,
   calculateAgeLabel,
   calculateAge,
+  findIndexesBeforeAndAfter,
 } = require("../cat-calculator");
 
 describe("Cat calculator", function () {
@@ -110,10 +111,17 @@ describe("Cat calculator", function () {
     });
   });
 
-  describe.skip("findIndexesBeforeAndAfter", function () {
-    it("should return an array of '1, 2' if passed in 7", () => {
-      const indexes = calculateAge(21);
-      eq(indexes, [1, 2]);
+  describe("findIndexesBeforeAndAfter", function () {
+    it("should return 1 and 2 when passed in 7", () => {
+      const {indexBefore, indexAfter} = findIndexesBeforeAndAfter(7);
+      eq(indexBefore, 5);
+      eq(indexAfter, 4);
+    });
+
+    it("should return 'null' and 0 when passed in 30", () => {
+      const {indexBefore, indexAfter} = findIndexesBeforeAndAfter(7);
+      eq(indexBefore, 0);
+      eq(indexAfter, null);
     });
   });
 });

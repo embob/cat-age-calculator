@@ -25,7 +25,7 @@ const data = [
 ];
 
 function getIndexOfHumanValue(age) {
-  return data.findIndex((object) => object.human === age);
+  return data.findIndex((element) => element.human === age);
 }
 
 function checkValidDataIndex(age) {
@@ -63,6 +63,13 @@ function calculateAge(age) {
   return convertMonthsToYears(getCatAge(age));
 }
 
+function findIndexesBeforeAndAfter(age) {
+  const reversedData = [...data.reverse()];
+  const indexBefore = reversedData.findIndex((element => element.human < age));
+  const indexAfter = indexBefore - 1 < 0 ? null : indexBefore - 1;
+  return { indexBefore, indexAfter };
+}
+
 module.exports = {
   data,
   getIndexOfHumanValue,
@@ -70,7 +77,8 @@ module.exports = {
   getCatAge,
   calculateAgeLabel,
   convertMonthsToYears,
-  calculateAge
+  calculateAge,
+  findIndexesBeforeAndAfter,
 };
 
 // Logic notes
