@@ -7,12 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Emma Karayiannis",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^7.0.1",
     "mocha": "^9.0.3"
   }
 }
