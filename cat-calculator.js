@@ -1,4 +1,3 @@
-
 // cat age in human years age / cat age in cat years
 
 // 1 month = 1 year
@@ -15,35 +14,56 @@
 // then + 4 again
 // 15 years  super senior cat
 
-
 const data = [
-  { human: 1, cat: 1},
-  { human: 3, cat: 4},
-  { human: 6, cat: 10},
-  { human: 12, cat: 15},
-  { human: 18, cat: 21},
-  { human: 24, cat: 24},
-  { human: 36, cat: 28},
+  { human: 1, cat: 1 },
+  { human: 3, cat: 4 },
+  { human: 6, cat: 10 },
+  { human: 12, cat: 15 },
+  { human: 18, cat: 21 },
+  { human: 24, cat: 24 },
+  { human: 36, cat: 28 },
 ];
 
 function getIndexOfCatValue(age) {
-  return data.findIndex(object => object.cat === age);
+  return data.findIndex((object) => object.cat === age);
 }
 
 function checkValidDataIndex(age) {
-  const index = getIndexOfCatValue(age)
+  const index = getIndexOfCatValue(age);
   if (index > data.length - 1 || index < 0) return false;
   return index;
 }
 
 function getHumanAge(catAge) {
   const validIndex = checkValidDataIndex(catAge);
-  if (!validIndex) return 'this age does not exist in the data';
+  if (!validIndex) return "this age does not exist in the data";
   return data[validIndex].human;
 }
 
-module.exports = { data, getIndexOfCatValue, checkValidDataIndex, getHumanAge };
+function calculateAgeLabel(value, type) {
+  return value > 1 ? `${type}s` : type;
+}
 
+function convertMonthsToYears(months) {
+  if (months < 12) return `${months} ${calculateAgeLabel(months, "month")}`;
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  if (remainingMonths === 0)
+    return `${years} ${calculateAgeLabel(years, "year")}`;
+  return `${years} ${calculateAgeLabel(
+    years,
+    "year"
+  )} and ${remainingMonths} ${calculateAgeLabel(remainingMonths, "month")}`;
+}
+
+module.exports = {
+  data,
+  getIndexOfCatValue,
+  checkValidDataIndex,
+  getHumanAge,
+  calculateAgeLabel,
+  convertMonthsToYears,
+};
 
 // Logic notes
 // diff between human years   10 - 4 = 6
@@ -53,7 +73,6 @@ module.exports = { data, getIndexOfCatValue, checkValidDataIndex, getHumanAge };
 // take human year want to seek and minus it from higher year value from it so 10 years - 6years = 4
 // for lower no calc: multiple 3/6 * 2 and add to lower no. of cat value
 // for higher no calc: multiply 3/6 * 4 and minus from higher no of cat value.
-
 
 // for upwards 28
 

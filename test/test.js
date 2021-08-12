@@ -1,5 +1,5 @@
 const { strictEqual: eq } = require("assert");
-const { getIndexOfCatValue, checkValidDataIndex, getHumanAge } = require('../cat-calculator');
+const { getIndexOfCatValue, checkValidDataIndex, getHumanAge, convertMonthsToYears, calculateAgeLabel } = require('../cat-calculator');
 
 
 describe("Cat calculator", function () {
@@ -28,7 +28,7 @@ describe("Cat calculator", function () {
     });
   }),
 
-  describe("calculateHumanAge", function () {
+  describe("getHumanAge", function () {
     it("should return 6 when passed in 10", () => {
       const humanAge = getHumanAge(10);
       eq(humanAge, 6);
@@ -39,6 +39,56 @@ describe("Cat calculator", function () {
       eq(humanAge, 'this age does not exist in the data');
     });
   });
+
+  describe("calculateAgeLabels", function () {
+    it("should return 'months' when passed in 4 and month", () => {
+      const label = calculateAgeLabel(4, 'month');
+      eq(label, 'months');
+    });
+
+    it("should return 'month' when passed in 1 and month", () => {
+      const label = calculateAgeLabel(1, 'month');
+      eq(label, 'month');
+    });
+    it("should return 'years' when passed in 4 and year", () => {
+      const label = calculateAgeLabel(10, 'year');
+      eq(label, 'years');
+    });
+
+    it("should return 'year' when passed in 1 and year", () => {
+      const label = calculateAgeLabel(1, 'year');
+      eq(label, 'year');
+    });
+  });
+
+
+  describe("convertMonthsToYears", function () {
+    it("should return '1 year and 6 months' when passed in 18", () => {
+      const ageInYears = convertMonthsToYears(18);
+      eq(ageInYears, '1 year and 6 months');
+    });
+
+    it("should return '1 month' when passed in 1", () => {
+      const ageInYears = convertMonthsToYears(1);
+      eq(ageInYears, '1 month');
+    });
+
+    it("should return '6 months' when passed in 6", () => {
+      const ageInYears = convertMonthsToYears(6);
+      eq(ageInYears, '6 months');
+    });
+
+    it("should return '2 years' when passed in 24", () => {
+      const ageInYears = convertMonthsToYears(24);
+      eq(ageInYears, '2 years');
+    });
+
+    it("should return '3 years and 4 months' when passed in 40", () => {
+      const ageInYears = convertMonthsToYears(40);
+      eq(ageInYears, '3 years and 4 months');
+    });
+
+  })
 
 });
 
