@@ -36,7 +36,7 @@ function checkValidDataIndex(age) {
 
 function getHumanAge(catAge) {
   const validIndex = checkValidDataIndex(catAge);
-  if (!validIndex) return "this age does not exist in the data";
+  if (!validIndex) return;
   return data[validIndex].human;
 }
 
@@ -45,12 +45,15 @@ function calculateAgeLabel(value, type) {
 }
 
 function convertMonthsToYears(months) {
+  if (typeof months !== 'number') return 'this age does not exist in the data';
   if (months < 12) return `${months} ${calculateAgeLabel(months, "month")}`;
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
+
   if (remainingMonths === 0)
     return `${years} ${calculateAgeLabel(years, "year")}`;
-  return `${years} ${calculateAgeLabel(
+
+    return `${years} ${calculateAgeLabel(
     years,
     "year"
   )} and ${remainingMonths} ${calculateAgeLabel(remainingMonths, "month")}`;

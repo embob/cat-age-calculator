@@ -39,7 +39,7 @@ describe("Cat calculator", function () {
 
       it("should return 'this age does not exist in the data' when passed in 7", () => {
         const humanAge = getHumanAge(7);
-        eq(humanAge, "this age does not exist in the data");
+        eq(humanAge, undefined);
       });
     });
 
@@ -96,9 +96,15 @@ describe("Cat calculator", function () {
       const age = calculateAge(21);
       eq(age, "1 year and 6 months");
     });
+
     it("should return '3 months' when passed in 4", () => {
       const age = calculateAge(4);
       eq(age, "3 months");
+    });
+
+    it("should return 'this age does not exist in the data' when passed in 7", () => {
+      const age = calculateAge(7);
+      eq(age, "this age does not exist in the data");
     });
   });
 });
