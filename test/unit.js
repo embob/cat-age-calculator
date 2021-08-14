@@ -58,22 +58,22 @@ describe("Cat calculator", function () {
   describe("findValuesBeforeAndAfter", function () {
     it("should return correct values when passed in 7", () => {
       const {
-        catBefore, catAfter, humanBefore, humanAfter
+        humanBefore, humanAfter, catBefore, catAfter
       } = findValuesBeforeAndAfter(7);
-      eq(catBefore, 3);
-      eq(catAfter, 6);
-      eq(humanBefore, 4);
-      eq(humanAfter, 10);
+      eq(humanBefore, 3);
+      eq(humanAfter, 6);
+      eq(catBefore, 4);
+      eq(catAfter, 10);
     });
 
     it("should return correct values when passed in 30", () => {
       const {
-        catBefore, catAfter, humanBefore, humanAfter
+        humanBefore, humanAfter, catBefore, catAfter
       } = findValuesBeforeAndAfter(30);
-      eq(catBefore, 36);
-      eq(catAfter, undefined);
-      eq(humanBefore, 28);
+      eq(humanBefore, 36);
       eq(humanAfter, undefined);
+      eq(catBefore, 28);
+      eq(catAfter, undefined);
     });
   });
 

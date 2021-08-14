@@ -1,11 +1,11 @@
 const {
-  getCatAgeInMonths,
+  getHumanAgeInMonths,
   formatAgeString,
 } = require("./cat-calculator");
 
-function reverseCatAgeCalculator(humanAge) {
-  const catAge = getCatAgeInMonths(humanAge);
-  return formatAgeString(catAge);
+function reverseCatAgeCalculator(catAge) {
+  const humanAge = getHumanAgeInMonths(catAge);
+  return formatAgeString(humanAge);
 }
 
 module.exports = reverseCatAgeCalculator;

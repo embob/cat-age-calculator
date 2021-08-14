@@ -27,8 +27,24 @@ describe("Reverse cat age to human calculator", function () {
     eq(catAge, "2 years");
   });
 
-  it.skip("should return '3 years and 4 months' when passed in 40", () => {
-    const catAge = reverseCatAgeCalculator(40);
-    eq(catAge, "3 years and 4 months");
+  it("should return '5 years' when passed in 36", () => {
+    const catAge = reverseCatAgeCalculator(36);
+    eq(catAge, "5 years");
   });
+
+  it("should return '4 months' when passed in 6", () => {
+    const catAge = reverseCatAgeCalculator(6);
+    eq(catAge, "4 months");
+  });
+
+  it("should return '9 years' when passed in 52", () => {
+    const catAge = reverseCatAgeCalculator(52);
+    eq(catAge, "9 years");
+  });
+
+  it("should return '6 years and 9 months' when passed in 43", () => {
+    const catAge = reverseCatAgeCalculator(43);
+    eq(catAge, "6 years and 9 months");
+  });
+
 });
