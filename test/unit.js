@@ -1,56 +1,58 @@
 const { strictEqual: eq, deepStrictEqual } = require("assert");
 const {
-  formatAgeString,
-  calculateAgeLabel,
+  getHumanAgeInMonths,
+  formatMeasurement,
+  formatAge,
   findValuesBeforeAndAfter,
+  calculateHumanMonths
 } = require("../cat-calculator");
 
 describe("Cat calculator", function () {
 
   describe("calculateAgeLabels", function () {
     it("should return 'months' when passed in 4 and month", () => {
-      const label = calculateAgeLabel(4, "month");
+      const label = formatMeasurement(4, "month");
       eq(label, "months");
     });
 
     it("should return 'month' when passed in 1 and month", () => {
-      const label = calculateAgeLabel(1, "month");
+      const label = formatMeasurement(1, "month");
       eq(label, "month");
     });
     it("should return 'years' when passed in 4 and year", () => {
-      const label = calculateAgeLabel(10, "year");
+      const label = formatMeasurement(10, "year");
       eq(label, "years");
     });
 
     it("should return 'year' when passed in 1 and year", () => {
-      const label = calculateAgeLabel(1, "year");
+      const label = formatMeasurement(1, "year");
       eq(label, "year");
     });
   });
 
-  describe("formatAgeString", function () {
+  describe("formatAge", function () {
     it("should return '1 year and 6 months' when passed in 18", () => {
-      const ageInYears = formatAgeString(18);
+      const ageInYears = formatAge(18);
       eq(ageInYears, "1 year and 6 months");
     });
 
     it("should return '1 month' when passed in 1", () => {
-      const ageInYears = formatAgeString(1);
+      const ageInYears = formatAge(1);
       eq(ageInYears, "1 month");
     });
 
     it("should return '6 months' when passed in 6", () => {
-      const ageInYears = formatAgeString(6);
+      const ageInYears = formatAge(6);
       eq(ageInYears, "6 months");
     });
 
     it("should return '2 years' when passed in 24", () => {
-      const ageInYears = formatAgeString(24);
+      const ageInYears = formatAge(24);
       eq(ageInYears, "2 years");
     });
 
     it("should return '3 years and 4 months' when passed in 40", () => {
-      const ageInYears = formatAgeString(40);
+      const ageInYears = formatAge(40);
       eq(ageInYears, "3 years and 4 months");
     });
   });
@@ -78,28 +80,3 @@ describe("Cat calculator", function () {
   });
 
 });
-
-//   it('passing in 1 year should return 1 month', () => {
-//     eq(catAge, '1');
-//   });
-//   it('passing in 4 years should return 3 months', () => {
-//     eq(catAge, '3');
-//   });
-//   it('passing in 10 years should return 6 months', () => {
-//     eq(catAge, '6');
-//   });
-//   it('passing in 12 years should return 7 months', () => {
-//     eq(catAge, '7');
-//   });
-//   it('passing in 15 years should return 1 year', () => {
-//     eq(catAge, '12');
-//   });
-//   it('passing in 21 years should return 1 year 6 months', () => {
-//     eq(catAge, '18');
-//   });
-//   it('passing in 24 years should return 2 years', () => {
-//     eq(catAge, '2');
-//   });
-//   it('passing in 28 years should return 3 years', () => {
-//     eq(catAge, '3');
-//   });

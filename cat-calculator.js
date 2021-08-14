@@ -1,4 +1,4 @@
-const data = [
+const monthToCatYears = [
   { humanMonths: 1, catYears: 1 }, // kitten
   { humanMonths: 3, catYears: 4 },
   // here
@@ -18,41 +18,46 @@ const data = [
 ];
 
 function getHumanAgeInMonths(catYears) {
-  const ageMap = data.find((element) => element.catYears === catYears);
-  if (ageMap) return ageMap.humanMonths;
+  const match = monthToCatYears.find(
+    (element) => element.catYears === catYears
+  );
+  if (match) return match.humanMonths;
   const humanMonths = calculateHumanMonths(catYears);
   return humanMonths;
 }
 
-function calculateAgeLabel(value, type) {
+function formatMeasurement(value, type) {
   return value > 1 ? `${type}s` : type;
 }
 
-function formatAgeString(months) {
-  if (months < 12) return `${months} ${calculateAgeLabel(months, "month")}`;
+function formatAge(months) {
+  if (months < 12) return `${months} ${formatMeasurement(months, "month")}`;
+
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
 
   if (remainingMonths === 0)
-    return `${years} ${calculateAgeLabel(years, "year")}`;
+    return `${years} ${formatMeasurement(years, "year")}`;
 
-  return `${years} ${calculateAgeLabel(
+  return `${years} ${formatMeasurement(
     years,
     "year"
-  )} and ${remainingMonths} ${calculateAgeLabel(remainingMonths, "month")}`;
+  )} and ${remainingMonths} ${formatMeasurement(remainingMonths, "month")}`;
 }
 
 function findValuesBeforeAndAfter(age) {
-  const lastValue = data[data.length - 1];
+  const lastValue = monthToCatYears[monthToCatYears.length - 1];
   if (age > lastValue.catYears) {
     return {
       humanBefore: lastValue.humanMonths,
       catBefore: lastValue.catYears,
     };
   }
-  const allBeforeValues = data.filter((element) => element.catYears < age);
+  const allBeforeValues = monthToCatYears.filter(
+    (element) => element.catYears < age
+  );
   const beforeValue = allBeforeValues[allBeforeValues.length - 1];
-  const afterValue = data[allBeforeValues.length];
+  const afterValue = monthToCatYears[allBeforeValues.length];
   return {
     humanBefore: beforeValue.humanMonths,
     humanAfter: afterValue.humanMonths,
@@ -61,27 +66,34 @@ function findValuesBeforeAndAfter(age) {
   };
 }
 
+function calculateWithoutNextValues(ageMinusCatBefore, humanBefore) {
+  const catYearsPerHumanYear = 4;
+  const twelveMonths = 12;
+  const numberOfCatYears = ageMinusCatBefore / catYearsPerHumanYear;
+  const humanMonthsSinceBefore = numberOfCatYears * twelveMonths;
+  return humanBefore + humanMonthsSinceBefore;
+}
+
 function calculateHumanMonths(age) {
   const { humanBefore, humanAfter, catBefore, catAfter } =
     findValuesBeforeAndAfter(age);
 
-  const catYearsPerHumanYear = 4;
-  const twelveMonths = 12;
   const ageMinusCatBefore = age - catBefore;
 
-  if (!humanAfter && !catAfter) {
-    const numberOfCatYears = ageMinusCatBefore / catYearsPerHumanYear;
-    const humanMonthsSinceBefore = numberOfCatYears * twelveMonths;
-    return humanBefore + humanMonthsSinceBefore;
-  }
+  const outsideOfKnownData = !humanAfter && !catAfter;
 
-  const humanMonthsSinceBefore = ((humanAfter - humanBefore) / (catAfter - catBefore)) * ageMinusCatBefore;
+  if (outsideOfKnownData) {
+    return calculateWithoutNextValues(ageMinusCatBefore, humanBefore);
+  }
+  const humanMonthsSinceBefore =
+    ((humanAfter - humanBefore) / (catAfter - catBefore)) * ageMinusCatBefore;
   return humanBefore + humanMonthsSinceBefore;
 }
 
 module.exports = {
   getHumanAgeInMonths,
-  calculateAgeLabel,
-  formatAgeString,
+  formatMeasurement,
+  formatAge,
   findValuesBeforeAndAfter,
+  calculateHumanMonths
 };
