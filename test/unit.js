@@ -1,56 +1,69 @@
 const { strictEqual } = require("assert");
 const {
-  formatMeasurement,
+  formatMonths,
+  formatYears,
   formatAge,
   findValuesBeforeAndAfter,
   calculateCatMonths,
+  convertToYearsAndMonths,
 } = require("../cat-calculator");
 
 describe("Cat calculator", () => {
-  describe("calculateAgeLabels", () => {
+  describe("formatMonths", () => {
     it("should return 'months' when passed in 4 and month", () => {
-      const label = formatMeasurement(4, "month");
-      strictEqual(label, "months");
+      const months = formatMonths(4);
+      strictEqual(months, "4 months");
     });
 
     it("should return 'month' when passed in 1 and month", () => {
-      const label = formatMeasurement(1, "month");
-      strictEqual(label, "month");
+      const months = formatMonths(1);
+      strictEqual(months, "1 month");
     });
-    it("should return 'years' when passed in 4 and year", () => {
-      const label = formatMeasurement(10, "year");
-      strictEqual(label, "years");
+  });
+
+  describe("formatYears", () => {
+    it("should return '4 years' when passed in 4", () => {
+      const years = formatYears(4);
+      strictEqual(years, "4 years");
     });
 
-    it("should return 'year' when passed in 1 and year", () => {
-      const label = formatMeasurement(1, "year");
-      strictEqual(label, "year");
+    it("should return '1 year' when passed in 1 and year", () => {
+      const years = formatYears(1);
+      strictEqual(years, "1 year");
+    });
+  });
+
+  describe("convertToYearsAndMonths", () => {
+    it("should return { years: 1, months: 6 } when passed in 18", () => {
+      const ageInYears = convertToYearsAndMonths(18);
+      strictEqual(ageInYears.years, 1);
+      strictEqual(ageInYears.months, 6);
     });
   });
 
   describe("formatAge", () => {
-    it("should return '1 year and 6 months' when passed in 18", () => {
-      const ageInYears = formatAge(18);
+    it("should return '1 year and 6 months' when passed in { years: 1, months: 6 }", () => {
+      const ageInYears = formatAge({ years: 1, months: 6 });
       strictEqual(ageInYears, "1 year and 6 months");
     });
 
-    it("should return '1 month' when passed in 1", () => {
-      const ageInYears = formatAge(1);
+    it("should return '1 month' when passed in { years: 1 }", () => {
+      const ageInYears = formatAge({ months: 1 });
       strictEqual(ageInYears, "1 month");
     });
 
-    it("should return '6 months' when passed in 6", () => {
-      const ageInYears = formatAge(6);
+    it("should return '6 months' when passed in { months: 6 }", () => {
+      const ageInYears = formatAge({ months: 6});
       strictEqual(ageInYears, "6 months");
     });
 
-    it("should return '2 years' when passed in 24", () => {
-      const ageInYears = formatAge(24);
+    it("should return '2 years' when passed in { years: 2 }", () => {
+      const ageInYears = formatAge({ years: 2});
       strictEqual(ageInYears, "2 years");
     });
 
-    it("should return '3 years and 4 months' when passed in 40", () => {
-      const ageInYears = formatAge(40);
+    it("should return '3 years and 4 months' when passed in { years: 3, months: 4 }", () => {
+      const ageInYears = formatAge({ years: 3, months: 4 });
       strictEqual(ageInYears, "3 years and 4 months");
     });
   });

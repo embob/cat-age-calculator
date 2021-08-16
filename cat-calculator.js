@@ -9,32 +9,35 @@ const catMonthsToHumanYears = [
   { catMonths: 36, humanYears: 28 }, // adult cat
 ];
 
-function getHumanAgeInMonths(humanYears) {
+function getCatAge(humanYears) {
   const match = catMonthsToHumanYears.find(
     (element) => element.humanYears === humanYears
   );
-  if (match) return match.catMonths;
+  if (match) return convertToYearsAndMonths(match.catMonths);
   const catMonths = calculateCatMonths(humanYears);
-  return catMonths;
+  return convertToYearsAndMonths(catMonths);
 }
 
-function formatMeasurement(value, type) {
-  return value > 1 ? `${type}s` : type;
-}
-
-function formatAge(months) {
-  if (months < 12) return `${months} ${formatMeasurement(months, "month")}`;
-
+function convertToYearsAndMonths(months) {
+  if (months < 12) return { years: 0, months };
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
+  return { years, months: remainingMonths };
+}
 
-  if (remainingMonths === 0)
-    return `${years} ${formatMeasurement(years, "year")}`;
+function formatYears(value) {
+  return value > 1 ? `${value} years` : `${value} year`;
+}
 
-  return `${years} ${formatMeasurement(
-    years,
-    "year"
-  )} and ${remainingMonths} ${formatMeasurement(remainingMonths, "month")}`;
+function formatMonths(value) {
+  return value > 1 ? `${value} months` : `${value} month`;
+}
+
+function formatAge(age) {
+  if (!age.years) return formatMonths(age.months);
+  if (!age.months) return formatYears(age.years);
+
+  return `${formatYears(age.years)} and ${formatMonths(age.months)}`;
 }
 
 function findValuesBeforeAndAfter(age) {
@@ -77,16 +80,19 @@ function calculateCatMonths(age) {
   if (outsideOfKnownData) {
     return calculateWithoutNextValues(ageMinusHumanPrevious, catPrevious);
   }
-  const catMonthsSincePrevious =
-  Math.round
-(((catNext - catPrevious) / (humanNext - humanPrevious)) * ageMinusHumanPrevious);
+  const catMonthsSincePrevious = Math.round(
+    ((catNext - catPrevious) / (humanNext - humanPrevious)) *
+      ageMinusHumanPrevious
+  );
   return catPrevious + catMonthsSincePrevious;
 }
 
 module.exports = {
-  getHumanAgeInMonths,
-  formatMeasurement,
+  getCatAge,
+  formatYears,
+  formatMonths,
   formatAge,
   findValuesBeforeAndAfter,
-  calculateCatMonths
+  calculateCatMonths,
+  convertToYearsAndMonths,
 };
