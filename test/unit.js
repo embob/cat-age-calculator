@@ -57,21 +57,21 @@ describe("Cat calculator", () => {
 
   describe("findValuesBeforeAndAfter", () => {
     it("should return correct values when passed in 7", () => {
-      const { humanBefore, humanAfter, catBefore, catAfter } =
+      const { humanPrevious, humanNext, catPrevious, catNext } =
         findValuesBeforeAndAfter(7);
-      strictEqual(humanBefore, 4);
-      strictEqual(humanAfter, 10);
-      strictEqual(catBefore, 3);
-      strictEqual(catAfter, 6);
+      strictEqual(humanPrevious, 4);
+      strictEqual(humanNext, 10);
+      strictEqual(catPrevious, 3);
+      strictEqual(catNext, 6);
     });
 
     it("should return correct values when passed in 30", () => {
-      const { humanBefore, humanAfter, catBefore, catAfter } =
+      const { humanPrevious, humanNext, catPrevious, catNext } =
         findValuesBeforeAndAfter(30);
-      strictEqual(humanBefore, 28);
-      strictEqual(humanAfter, undefined);
-      strictEqual(catBefore, 36);
-      strictEqual(catAfter, undefined);
+      strictEqual(humanPrevious, 28);
+      strictEqual(humanNext, undefined);
+      strictEqual(catPrevious, 36);
+      strictEqual(catNext, undefined);
     });
   });
 

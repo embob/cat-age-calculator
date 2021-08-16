@@ -41,8 +41,8 @@ function findValuesBeforeAndAfter(age) {
   const lastValue = catMonthsToHumanYears[catMonthsToHumanYears.length - 1];
   if (age > lastValue.humanYears) {
     return {
-      humanBefore: lastValue.humanYears,
-      catBefore: lastValue.catMonths,
+      humanPrevious: lastValue.humanYears,
+      catPrevious: lastValue.catMonths,
     };
   }
   const allBeforeValues = catMonthsToHumanYears.filter(
@@ -51,36 +51,36 @@ function findValuesBeforeAndAfter(age) {
   const beforeValue = allBeforeValues[allBeforeValues.length - 1];
   const afterValue = catMonthsToHumanYears[allBeforeValues.length];
   return {
-    humanBefore: beforeValue.humanYears,
-    humanAfter: afterValue.humanYears,
-    catBefore: beforeValue.catMonths,
-    catAfter: afterValue.catMonths,
+    humanPrevious: beforeValue.humanYears,
+    humanNext: afterValue.humanYears,
+    catPrevious: beforeValue.catMonths,
+    catNext: afterValue.catMonths,
   };
 }
 
-function calculateWithoutNextValues(ageMinusHumanBefore, catBefore) {
+function calculateWithoutNextValues(ageMinusHumanPrevious, catPrevious) {
   const humanYearsPerCatYear = 4;
   const twelveMonths = 12;
-  const numberOfHumanYears = ageMinusHumanBefore / humanYearsPerCatYear;
-  const catMonthsSinceBefore = numberOfHumanYears * twelveMonths;
-  return catBefore + catMonthsSinceBefore;
+  const numberOfHumanYears = ageMinusHumanPrevious / humanYearsPerCatYear;
+  const catMonthsSincePrevious = numberOfHumanYears * twelveMonths;
+  return catPrevious + catMonthsSincePrevious;
 }
 
 function calculateCatMonths(age) {
-  const { humanBefore, humanAfter, catBefore, catAfter } =
+  const { humanPrevious, humanNext, catPrevious, catNext } =
     findValuesBeforeAndAfter(age);
 
-  const ageMinusHumanBefore = age - humanBefore;
+  const ageMinusHumanPrevious = age - humanPrevious;
 
-  const outsideOfKnownData = !humanAfter && !catAfter;
+  const outsideOfKnownData = !humanNext && !catNext;
 
   if (outsideOfKnownData) {
-    return calculateWithoutNextValues(ageMinusHumanBefore, catBefore);
+    return calculateWithoutNextValues(ageMinusHumanPrevious, catPrevious);
   }
-  const catMonthsSinceBefore =
+  const catMonthsSincePrevious =
   Math.round
-(((catAfter - catBefore) / (humanAfter - humanBefore)) * ageMinusHumanBefore);
-  return catBefore + catMonthsSinceBefore;
+(((catNext - catPrevious) / (humanNext - humanPrevious)) * ageMinusHumanPrevious);
+  return catPrevious + catMonthsSincePrevious;
 }
 
 module.exports = {
