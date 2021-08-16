@@ -4,7 +4,7 @@ const {
 } = require("./cat-calculator");
 
 function reverseCatAgeCalculator(catAge) {
-  // add catch for NaN age
+  if (typeof catAge !== 'number') return 'this is not a valid input, please use a number';
   const humanAge = getHumanAgeInMonths(catAge);
   return formatAge(humanAge);
 }
