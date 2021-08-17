@@ -1,11 +1,11 @@
 const { strictEqual } = require("assert");
 const {
-  formatMonths,
   formatYears,
+  formatMonths,
   formatAge,
-  findValuesBeforeAndAfter,
   calculateCatMonths,
   convertToYearsAndMonths,
+  findValuesBeforeAndAfter,
 } = require("../cat-calculator");
 
 describe("Cat calculator", () => {
@@ -53,12 +53,12 @@ describe("Cat calculator", () => {
     });
 
     it("should return '6 months' when passed in { months: 6 }", () => {
-      const ageInYears = formatAge({ months: 6});
+      const ageInYears = formatAge({ months: 6 });
       strictEqual(ageInYears, "6 months");
     });
 
     it("should return '2 years' when passed in { years: 2 }", () => {
-      const ageInYears = formatAge({ years: 2});
+      const ageInYears = formatAge({ years: 2 });
       strictEqual(ageInYears, "2 years");
     });
 

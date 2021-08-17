@@ -64,8 +64,8 @@ function findValuesBeforeAndAfter(age) {
 function calculateWithoutNextValues(ageMinusHumanPrevious, catPrevious) {
   const humanYearsPerCatYear = 4;
   const twelveMonths = 12;
-  const numberOfHumanYears = ageMinusHumanPrevious / humanYearsPerCatYear;
-  const catMonthsSincePrevious = numberOfHumanYears * twelveMonths;
+  const catMonthsSincePrevious =
+    (ageMinusHumanPrevious * twelveMonths) / humanYearsPerCatYear;
   return catPrevious + catMonthsSincePrevious;
 }
 
