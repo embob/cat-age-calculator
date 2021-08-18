@@ -10,6 +10,7 @@ const catMonthsToHumanYears = [
 ];
 
 function getCatAge(humanYears) {
+  if (!Number.isInteger(humanYears)) throw 'Error: getCatAge expects an integer to be passed into it';
   const match = catMonthsToHumanYears.find(
     (element) => element.humanYears === humanYears
   );

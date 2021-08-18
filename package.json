@@ -2,12 +2,13 @@
   "name": "cat-calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "cat-calculator.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/*.js",
+    "build-test": "mocha build/test/*.js",
     "prepare": "husky install"
   },
   "keywords": [],
