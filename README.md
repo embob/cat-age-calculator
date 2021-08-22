@@ -7,13 +7,17 @@ For eg. a 33 year old human is a 4 years and 3 months old cat.
 
 
 
-## Installation
+## Install
 
 ```
 npm install cat-age-calculator --save
 ```
 
+The entry file for this package is setup as an UMD module, allowing it to be used as a Node module and in the browser side too.
+
+
 ## Usage
+
 
 Pass an integer between 1 and 116 to one of the following functions...
 
