@@ -16,5 +16,5 @@ const humanToCatDataFormatted = ${JSON.stringify(humanToCatMapFormatted)};
 module.exports = { humanToCatData, humanToCatDataFormatted };
 `;
 
-fs.writeFileSync("../humanToCatData.js", code);
+fs.writeFileSync("./src/humanToCatData.js", code);
 

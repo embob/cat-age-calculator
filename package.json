@@ -2,20 +2,19 @@
   "name": "cat-calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "dist/index_bundle.js",
   "scripts": {
-    "test": "mocha test/*.js",
-    "build-test": "mocha build/test/*.js",
-    "prepare": "husky install"
+    "test": "mocha ./test/*.js",
+    "test-build": "mocha build/test/*.js",
+    "build-data": "node build/build.js",
+    "build-prod": "webpack"
   },
   "keywords": [],
   "author": "Emma Karayiannis",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^7.0.1",
-    "mocha": "^9.0.3"
+    "mocha": "^9.0.3",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   }
 }
