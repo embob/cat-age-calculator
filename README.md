@@ -35,7 +35,7 @@ getCatAgeString(33);
 
 ```
 
-## What I did
+## What I did, aka what is in the build folder
 
 The known human to cat age data (see table below) was converted into an array of objects to reference plus the following:
 
