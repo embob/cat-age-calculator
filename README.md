@@ -1,8 +1,13 @@
 # Reverse cat age calculator 🐈
 
+## Why? 
+
+I wanted to see how old I would be as a cat using my human age. I couldn't find a good calculator out there for any human equivalent age. So I wrote one...
+
+
 ## What it does
 
-Calculates the cat age from a human equivalent age.
+Returns the calculated cat age from a human equivalent age.
 
 For eg. a 33 year old human is a 4 years and 3 months old cat. 
 
@@ -36,11 +41,6 @@ getCatAgeString(33);
 // '4 years and 3 months'
 
 ```
-
-## Why? 
-
-I wanted to see how old I would be as a cat using my human age. I couldn't find a good calculator out there for any human equivalent age. So I wrote one...
-
 
 ## What I did, aka what is in the build folder
 
