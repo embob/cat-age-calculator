@@ -24,5 +24,9 @@
     "mocha": "^9.0.3",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/embob/cat-age-calculator.git"
   }
 }
