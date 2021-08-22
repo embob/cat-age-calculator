@@ -11,7 +11,7 @@ For eg. a 33 year old human is a 4 years and 3 months old cat.
 I wanted to see how old I would be as a cat using my human age. I couldn't find a good calculator out there for any human equivalent age. So I wrote one...
 
 
-## How to use this module
+## Example usage
 
 There are two functions available that return the cat age in different formats. Pass in an integer between 1 and 116 for the human age to one of the following...
 
