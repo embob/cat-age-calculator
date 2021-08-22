@@ -4,7 +4,7 @@
 
 Calculates the cat age from a human equivalent age.
 
-For eg. a 33 year old human is a 4 years and 3 month old cat. 
+For eg. a 33 year old human is a 4 years and 3 months old cat. 
 
 ## Why? 
 
