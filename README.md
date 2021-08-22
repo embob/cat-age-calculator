@@ -1,19 +1,21 @@
 # Reverse cat age calculator 🐈
 
+
 ## What it does
 
-Calculates the cat age from a human equivalent age.
+Returns the calculated cat age from a human equivalent age.
 
-For eg. a 33 year old human is a 4 years and 3 month old cat. 
+For eg. a 33 year old human is a 4 years and 3 months old cat. 
 
-## Why? 
+## Installation
 
-I wanted to see how old I would be as a cat using my human age. I couldn't find a good calculator out there that works that way round for any human equivalent age. So I wrote one...
+```
+npm install cat-age-calculator --save
+```
 
+## Usage
 
-## How to use this module
-
-There are two functions available that return the cat age in different formats. Pass in an integer between 1 and 116 for the human age to one of the following...
+Pass an integer between 1 and 116 to one of the following functions...
 
 ### 1. Returns an object
 
@@ -35,15 +37,15 @@ getCatAgeString(33);
 
 ```
 
-## What I did
+## What it does behind the scenes
 
-The known human to cat age data (see table below) was converted into an array of objects to reference plus the following:
+The known human to cat age data (see table below) was converted to an array of objects to reference. And the following functionality was added.
 
 1. a check to see if the human value inputted exists in the data array and returns the corresponding cat age it if it finds a match.
 2. if the human age is below 28 it finds both the human and cat values before and after in the data and uses them for the cat age calculation.
 3. if the human age is above 28 it uses the last human and cat values in the data plus the logic of +4 human years to every 1 cat year for the calculation.
 4. an object per age format is generated from a function within the build folder, each of valid human years are property keys with their equivalent cat age as the property value.
-5. the public functions simply return a cat age value from the array using the human age for the index to lookup the value.
+5. The public functions are setup to return a cat age value from the data objects using the human age for the index to lookup the value.
 
 ## What's up with cat ages
 
