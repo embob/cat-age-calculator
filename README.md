@@ -17,7 +17,7 @@ I wanted to see how old I would be as a cat using my human age. I couldn't find 
 npm install cat-age-calculator --save
 ```
 
-## Example usage
+## Usage
 
 Pass an integer between 1 and 116 to one of the following functions...
 
