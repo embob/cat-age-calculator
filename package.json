@@ -9,7 +9,7 @@
     "build-data": "node build/build.js",
     "build-prod": "webpack"
   },
-  "keywords": [],
+  "keywords": ["cat", "human", "catAge", "humanAge", "age", "catYears", "ageCalculator"],
   "author": "Emma Karayiannis",
   "license": "ISC",
   "devDependencies": {
