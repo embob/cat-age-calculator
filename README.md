@@ -37,7 +37,7 @@ getCatAgeString(33);
 
 ## What I did, aka what is in the build folder
 
-The known human to cat age data (see table below) was converted into an array of objects to reference plus the following:
+The known human to cat age data (see table below) was converted into an array of objects to reference plus functions that do the following steps:
 
 1. a check to see if the human value inputted exists in the data array and returns the corresponding cat age it if it finds a match.
 2. if the human age is below 28 it finds both the human and cat values before and after in the data and uses them for the cat age calculation.
