@@ -15,7 +15,7 @@ npm install cat-age-calculator --save
 
 ## Example usage
 
-There are two functions available that return the cat age in different formats. Pass in an integer between 1 and 116 for the human age to one of the following...
+Pass an integer between 1 and 116 to one of the following functions...
 
 ### 1. Returns an object
 
