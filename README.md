@@ -11,7 +11,6 @@ For eg. a 33 year old human is a 4 years and 3 months old cat.
 
 ```
 npm install cat-age-calculator --save
-
 ```
 
 ## Example usage
