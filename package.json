@@ -1,6 +1,6 @@
 {
   "name": "cat-age-calculator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Returns the calculated cat age from a human equivalent age.",
   "main": "dist/index_bundle.js",
   "scripts": {
@@ -9,7 +9,15 @@
     "build-data": "node build/build.js",
     "build-prod": "webpack"
   },
-  "keywords": ["cat", "human", "catAge", "humanAge", "age", "catYears", "ageCalculator"],
+  "keywords": [
+    "cat",
+    "human",
+    "catAge",
+    "humanAge",
+    "age",
+    "catYears",
+    "ageCalculator"
+  ],
   "author": "Emma Karayiannis",
   "license": "ISC",
   "devDependencies": {
