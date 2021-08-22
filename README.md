@@ -39,13 +39,13 @@ getCatAgeString(33);
 
 ## What it does behind the scenes
 
-The known human to cat age data (see table below) was put into an array of objects to reference, plus the following functionality was added.
+The known human to cat age data (see table below) were captured in an array of objects and the following functionality calculates the cat age:
 
-1. Checks to see if the inputted value exists in the data array and returns the corresponding cat age if it finds a match.
+1. It first checks to see if the inputted value exists in the data array and returns the corresponding cat age if it finds a match.
 2. If the human age is below 28, it finds both the human and cat values before and after the inputted age within the data and uses them in a calculation.
 3. If the human age is above 28, it uses the last human and cat values in the data plus the logic that there are 4 human years to every 1 cat year in a calculation.
-4. A build script generates an object containing every human year and it's equivalent cat age, the human years are the property keys and the cat ages are the property value.
-5. The public functions return the data in two different formats and are setup to return a cat age value from the objects using the human age for the index to lookup the value.
+4. Using the calculations above, a build script loops over a set of human years and generates an object containing every human year and it's equivalent cat age (the human years are the property keys and the cat ages are the property value).
+5. The public functions simply return the calculated cat age in different formats using the human age passed in as a key to lookup a property value.
 
 ## What's up with cat ages
 
