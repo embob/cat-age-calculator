@@ -37,13 +37,13 @@ getCatAgeString(33);
 
 ## What I did, aka what is in the build folder
 
-The known human to cat age data (see table below) was converted into an array of objects to reference plus functions that do the following steps:
+The known human to cat age data (see table below) was converted to an array of objects to reference. And the following functionality was added.
 
 1. a check to see if the human value inputted exists in the data array and returns the corresponding cat age it if it finds a match.
 2. if the human age is below 28 it finds both the human and cat values before and after in the data and uses them for the cat age calculation.
 3. if the human age is above 28 it uses the last human and cat values in the data plus the logic of +4 human years to every 1 cat year for the calculation.
 4. an object per age format is generated from a function within the build folder, each of valid human years are property keys with their equivalent cat age as the property value.
-5. the public functions simply return a cat age value from the array using the human age for the index to lookup the value.
+5. The public functions are setup to return a cat age value from the array using the human age for the index to lookup the value.
 
 ## What's up with cat ages
 
