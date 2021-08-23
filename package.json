@@ -1,6 +1,6 @@
 {
   "name": "cat-age-calculator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Returns the calculated cat age from a human equivalent age.",
   "main": "dist/index_bundle.js",
   "scripts": {
