@@ -10,5 +10,6 @@ module.exports = {
       name: 'catCalculator',
       type: 'umd',
     },
+    globalObject: 'this',
   },
 };
